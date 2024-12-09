@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CaneLink - Connecting Farmers and Customers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        
+        .navbar {
+            background-color: #ffffff;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2E7D32;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            margin-left: 2rem;
+            font-weight: 500;
+        }
+
+        .nav-links .signup-btn {
+            background-color: #2E7D32;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links .signup-btn:hover {
+            background-color: #1B5E20;
+        }
+
+       
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('sugarcane.jpg') center/cover;
+            height: 100vh;
+            display: flex; 
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .cta-btn {
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .primary-btn {
+            background-color: #2E7D32;
+            color: white;
+        }
+
+        .secondary-btn {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 10%;
+            background-color: #f5f5f5;
+        }
+
+        .features h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .feature-card h3 {
+            color: #2E7D32;
+            margin: 1rem 0;
+        }
+
+        
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links a {
+                margin-left: 1rem;
+            }
+
+            .features {
+                padding: 3rem 5%;
+            }
+        }
+
+        .footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #2E7D32;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p, 
+        .footer-section a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #2E7D32;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: #2E7D32;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+        }
+
+        
+        .about-us {
+        padding: 5rem 10%;
+        background-color: #fff;
+        }
+        .about-header {
+        text-align: center;
+        margin-bottom: 4rem;
+        }
+        .about-header h2 {
+        color: #2E7D32;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        }
+        .about-header p {
+        color: #666;
+        max-width: 800px;
+        margin: 0 auto;
+        }
+        .about-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 3rem;
+        margin-top: 4rem;
+        }
+        .about-card {
+        text-align: center;
+        padding: 2rem;
+        border-radius: 10px;
+        background: #f9f9f9;
+        transition: transform 0.3s ease;
+        }
+        .about-card:hover {
+        transform: translateY(-10px);
+        }
+        .about-card i {
+        font-size: 2.5rem;
+        color: #2E7D32;
+        margin-bottom: 1rem;
+        }
+        .about-card h3 {
+        color: #333;
+        margin-bottom: 1rem;
+        }
+        .about-card p {
+        color: #666;
+        line-height: 1.6;
+        }
+        .mission-vision {
+        margin-top: 4rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        }
+        .mission, .vision {
+        padding: 2rem;
+        border-radius: 10px;
+        background: #f9f9f9;
+        }
+        @media (max-width: 768px) {
+        .mission-vision {
+        grid-template-columns: 1fr;
+        }
+        }
+    </style>
+</head>
+<body>
+  
+    <nav class="navbar">
+        <div class="logo"><img src="./logo2.png"></div>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#about">About</a>
+            <a href="login.html">Login</a>
+            <a href="signup.html" class="signup-btn">Sign Up</a>
+        </div>
+    </nav>
+
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Connecting Farmers and Customers</h1>
+            <p>Efficiently connect farmers with customers using our platform.</p>
+            <div class="cta-buttons">
+                <a href="signup.html" class="primary-btn cta-btn">Sign Up</a>
+                <a href="login.html" class="secondary-btn cta-btn">Login</a>
+            </div>
+        </div>
+    </section>
+    <section class="about-us" id="about">
+        <div class="about-header">
+        <h2>About CaneLink</h2>
+        <p>Bridging the gap between farmers and consumers through innovative technology</p>
+        </div>
+        <div class="about-grid">
+        <div class="about-card">
+        <i class="fas fa-handshake"></i>
+        <h3>Our Story</h3>
+        <p>CaneLink emerged from a simple observation: the disconnect between hardworking farmers and consumers 
+            seeking quality agricultural products. We set out to create a platform that would revolutionize agricultural commerce.</p>
+        </div>
+        <div class="about-card">
+        <i class="fas fa-users"></i>
+        <h3>Who We Are</h3>
+        <p>We are a team of passionate individuals combining expertise in agriculture, technology, and business to
+             create sustainable solutions for the farming community and consumers alike.</p>
+        </div>
+        <div class="about-card">
+        <i class="fas fa-globe"></i>
+        <h3>Our Impact</h3>
+        <p>Through our platform, we've helped countless farmers increase their income while providing consumers access 
+            to fresh, local produce at fair prices.</p>
+        </div>
+        </div>
+        <div class="mission-vision">
+        <div class="mission">
+        <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+        <p>To empower farmers and enhance the agricultural supply chain by creating a transparent, efficient, and sustainable
+             marketplace that benefits both producers and consumers.</p>
+        <ul style="margin-top: 1rem; margin-left: 1.5rem;">
+        <li>Support local farming communities</li>
+        <li>Promote sustainable agriculture</li>
+        <li>Ensure fair pricing for all parties</li>
+        <li>Reduce supply chain inefficiencies</li>
+        </ul>
+        </div>
+        <div class="vision">
+        <h3><i class="fas fa-eye"></i> Our Vision</h3>
+        <p>To become the leading agricultural marketplace platform that transforms how farm products are bought and sold,
+             creating value for everyone involved in the agricultural ecosystem.</p>
+        <ul style="margin-top: 1rem; margin-left: 1.5rem;">
+        <li>Digital transformation of agriculture</li>
+        <li>Community-driven growth</li>
+        <li>Environmental sustainability</li>
+        <li>Economic empowerment</li>
+        </ul>
+        </div>
+        </div>
+        </section>
+
+    <!-- Updated Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About CaneLink</h3>
+                <p>Connecting farmers and customers for a better agricultural future. Join us in revolutionizing the way 
+                    agricultural products are bought and sold.</p>
+               
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#features">Features</a>
+                <a href="#about">About Us</a>
+                <a href="#services">Our Services</a>
+                <a href="login.html">Login</a>
+                <a href="signup.html">Sign Up</a>
+            </div>
+
+            <div class="footer-section contact-info">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-phone"></i> +254 768 141129</p>
+                <p><i class="fas fa-envelope"></i> info@canelink.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Nairobi<br>Kenya</p>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2024 CaneLink. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Add smooth scroll behavior -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
